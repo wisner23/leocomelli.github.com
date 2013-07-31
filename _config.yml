@@ -1,19 +1,22 @@
-title:            Site Title
-tagline:          A short tagline
-description:      Describe your website.
+title:            Leonardo Comelli
+tagline:          Casos e Causos no Desenvolvimento de Software.
+description:      Casos e Causos no Desenvolvimento de Software.
 #Comment out url when working locally to resolve base urls correctly
-url:              http://your-site.com
+url:              http://leocomelli.github.io
+
+# Enable Comments
+comments: false
 
 # Owner/author information
 owner:
-  name:           Your Name
+  name:           L&eacute;o Comelli
   avatar:         bio-photo.jpg
-  bio:            "Describe your self."
-  email:          your@email.com
+  bio:            "Programador apaixonado por desenvolver software. Aprender e compartilhar, esse &eacute; o caminho... mas n&atilde;o necessariamente nesta ordem."
+  email:          leonardo.comelli@gmail.com
   # Social networking links are used in author-bio sidebar. Update and remove as you like.
-  twitter:        
-  facebook:       
-  github:         
+  twitter: leocomelli       
+  facebook: leonardo.comelli      
+  github: leocomelli        
   linkedin:       
   instagram:      
   lastfm:         
@@ -30,18 +33,13 @@ bing_verify:
 # Links to include in top navigation
 # For external links add external: true
 links:
-  - title: About
-    url: /about
-  - title: Articles
+#  - title: Sobre
+#    url: /about
+  - title: Artigos
     url: /articles
-  - title: Theme Setup
-    url: /theme-setup
-  - title: Made Mistakes
-    url: http://mademistakes.com
-    external: true
 
 # http://en.wikipedia.org/wiki/List_of_tz_database_time_zones
-timezone:    America/New_York
+timezone:    America/Sao_Paulo
 future:      true
 pygments:    true
 markdown:    kramdown

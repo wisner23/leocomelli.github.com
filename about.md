@@ -1,9 +1,9 @@
 ---
 layout: page
 permalink: /about/index.html
-title: About the Theme
-tagline: Minimal Mistakes, a Jekyll Theme
-tags: [about, Jekyll, theme, responsive]
+title: Sobre
+tagline: Um pouco sobre o autor
+tags: [sobre, about]
 image:
   feature: texture-feature-02.jpg
 ---

@@ -6,7 +6,7 @@ modified: 2013-05-31
 category: articles
 tags: [intro, beginner, jekyll, tutorial]
 image:
-  feature: texture-feature-05.jpg
+  feature: texture-feature-06.jpg
 ---
 
 <section id="table-of-contents" class="toc">

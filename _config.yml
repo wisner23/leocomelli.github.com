@@ -11,13 +11,13 @@ comments: false
 owner:
   name:           L&eacute;o Comelli
   avatar:         bio-photo.jpg
-  bio:            "Programador apaixonado por desenvolver software. Aprender e compartilhar, esse &eacute; o caminho... mas n&atilde;o necessariamente nesta ordem."
+  bio:            "Programador apaixonado por desenvolver software. Aprender para compartilhar, esse &eacute; o caminho... n&atilde;o necessariamente nesta ordem."
   email:          leonardo.comelli@gmail.com
   # Social networking links are used in author-bio sidebar. Update and remove as you like.
   twitter: leocomelli       
   facebook: leonardo.comelli      
   github: leocomelli        
-  linkedin:       
+  linkedin:   
   instagram:      
   lastfm:         
   tumblr:         
@@ -33,8 +33,8 @@ bing_verify:
 # Links to include in top navigation
 # For external links add external: true
 links:
-#  - title: Sobre
-#    url: /about
+  - title: Sobre
+    url: /about
   - title: Artigos
     url: /articles
 

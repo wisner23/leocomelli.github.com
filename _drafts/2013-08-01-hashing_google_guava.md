@@ -23,19 +23,47 @@ O método `Objects.hash(Object...values)` gera um código de espalhamento de aco
   Objects.hash(myObject.getId(), myObject.getName());
 {% endhighlight %}
 
-O código de espalhamento gerado pelo método `Object.hashCode()` ou `Objects.hash(Object...values)` esta restrito a 32 bits, pois ambos os métodos retornam `int`. Devido a isso, muitas vezes o código de espalhamento não possui uma implementação adequada.
-Para gerar um código de espalhamento mais elaborado, podemos utilizar o [`Google Guava`](http://code.google.com/p/guava-libraries/wiki/HashingExplained){:target="_blank"} como opção.
+O código de espalhamento gerado pelo método `Object.hashCode()` ou `Objects.hash(Object...values)` esta restrito a 32 bits, pois ambos os métodos retornam um `int`. Devido a isso, muitas vezes o código de espalhamento não possui uma implementação adequada.
+Uma das opções para gerar um código de espalhamento mais elaborado, é o [`Google Guava`](http://code.google.com/p/guava-libraries/wiki/HashingExplained){:target="_blank"}.
 
 ### Google Guava 
 
-Com o Google Guava é possível ir além de uma implementação limitada a um retorno de 32 bits. Com ele é possível criar uma `HashFunction` que pode implementar uma série de algoritmos, dentre eles: MD5, SHA-1, SHA-256 e SHA-512.
+Com o Google Guava é possível ir além de uma implementação limitada a um retorno de 32 bits. Com ele é possível criar um código de espalhamento baseado nos algoritmos MD5, SHA-1, SHA-256, SHA-512, entre outros.
+
+Existe um método estático na classe `Hashing` para cada tipo de algoritmo disponível, por exemplo:
+
+{% highlight java %}
+  HashFunction hashFunction = Hashing.md5();
+{% endhighlight %}
+
+`HashFunction` é uma função `stateless` que mapeia um bloco arbitrário de dados para um número fixo de bits. Através da instância de `HashFunction` é possível criar um código de espalhamento para os seguintes tipos de entradas: `int`, `long`, `byte[]`, `CharSequence` e `Object`. 
+
+{% highlight java %}
+  HashFunction hashFunction = Hashing.md5();
+  hashFunction.hashString("myArg"))
+{% endhighlight %}
+
+A partir de `HashFunction` também é possível criar um `Hasher` (`stateful`), que provê uma sintaxe fluente para adicionar dados e posteriormente obter o código de espalhamento. O `Hasher` aceita todos os tipos de entradas citados acima.
 
 {% highlight java %}
   HashFunction hashFunction = Hashing.md5();
   hashFunction.newHasher()
-	      .putInt(myObject.getId())
-	      .putString(myObject.getName(), Charsets.UTF_8)
+	      .putString("myArg")
 	      .hash();
+{% endhighlight %}
+
+Para utilizar como entrada um tipo de objeto particular, é necessário descrever como este objeto deverá ser decomposto. Isso vale tanto para o método `hashFunction.hashObject(...)`, quanto para o método `hasher.putObject(...)`. Para descrever isso é necessário utilizar o `Funnel`.
+
+{% highlight java %}
+  Funnel<MyObject> funnel = new Funnel<MyObject>() {
+	@Override
+	public void funnel(MyObject myObject, PrimitiveSink into) {
+		into.putInt(myObject.getId())
+		    .putString(myObject.getName(), Charsets.UTF_8);
+	}
+  };
+  HashFunction hf = Hashing.md5();
+  hf.newHasher().putObject(myObject, funnel).hash();
 {% endhighlight %}
 
 
